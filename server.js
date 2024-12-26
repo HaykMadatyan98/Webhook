@@ -18,7 +18,7 @@ app.get("/setWebhook", async (req, res) => {
       "https://yoai.yophone.com/api/pub/setWebhook",
       {
         webhookURL:
-          "https://l9tda6uur3.execute-api.eu-north-1.amazonaws.com/stage/webhook",
+          "https://legislative-raeann-arnology-568c6f22.koyeb.app/webhook",
       },
       {
         headers: {
