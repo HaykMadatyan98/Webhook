@@ -12,6 +12,49 @@ app.get("/webhook", async (req, res) => {
   res.send(req);
 });
 
+app.get("/getUpdates", async (req, res) => {
+  try {
+    const resp = await axios.post(
+      "https://yoai.yophone.com/api/pub/getUpdates",
+      {},
+      {
+        headers: {
+          "X-YoAI-API-KEY":
+            "019402cd-caee-74ea-b4cb-dfbe14cf9ff1:a28b2e067e4f5fb5f9420a3b080021c588a7c98a6e7a4cb8d5a6a431fd2d130d",
+        },
+      }
+    );
+    // Check if the response is OK
+    res.json(resp.data); // Send the JSON data back to the client
+  } catch (error) {
+    console.error("Error fetching from YoAI API:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.get("/sendMessage", async (req, res) => {
+  try {
+    const resp = await axios.post(
+      "https://yoai.yophone.com/api/pub/sendMessage",
+      {
+        to: "37495998920",
+        text: "Bot message"
+      },
+      {
+        headers: {
+          "X-YoAI-API-KEY":
+            "019402cd-caee-74ea-b4cb-dfbe14cf9ff1:a28b2e067e4f5fb5f9420a3b080021c588a7c98a6e7a4cb8d5a6a431fd2d130d",
+        },
+      }
+    );
+    // Check if the response is OK
+    res.json(resp.data); // Send the JSON data back to the client
+  } catch (error) {
+    console.error("Error fetching from YoAI API:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.get("/setWebhook", async (req, res) => {
   try {
     const resp = await axios.post(
