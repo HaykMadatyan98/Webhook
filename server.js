@@ -46,7 +46,8 @@ app.get("/getUpdates", async (req, res) => {
         headers: { "X-YoAI-API-KEY": API_KEY },
       }
     );
-    res.json(resp);
+    console.log(resp)
+    res.json(resp.data);
   } catch (error) {
     console.error("Error fetching from YoAI API:", error.message);
     res.status(500).send("Internal Server Error");
