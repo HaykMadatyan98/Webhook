@@ -65,7 +65,7 @@ app.get("/sendMessage", async (req, res) => {
         headers: { "X-YoAI-API-KEY": API_KEY },
       }
     );
-    res.json(resp.data);
+    res.json(resp);
   } catch (error) {
     console.error("Error sending message:", error.message);
     res.status(500).send("Internal Server Error");
