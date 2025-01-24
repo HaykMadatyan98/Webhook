@@ -28,14 +28,13 @@ io.on("connection", (socket) => {
 });
 
 app.get("/webhook", (req, res) => {
-  io.on("connection", (socket) => {
-  console.log("A user connected");
+  console.log(req);
+  console.log(res);
 
   // Log disconnections
   socket.on("disconnect", () => {
     console.log("A user disconnected");
   });
-});
 })
 
 // Webhook endpoint with WebSocket integration
