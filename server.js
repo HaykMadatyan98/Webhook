@@ -27,6 +27,15 @@ io.on("connection", (socket) => {
   });
 });
 
+app.get("/webhook", (req, res) => {
+  console.log("A user connected");
+
+  // Log disconnections
+  socket.on("disconnect", () => {
+    console.log("A user disconnected");
+  });
+})
+
 // Webhook endpoint with WebSocket integration
 app.post("/webhook", (req, res) => {
   console.log("Webhook received:", req.body);
