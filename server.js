@@ -72,7 +72,6 @@ app.get("/getUpdates", async (req, res) => {
         headers: { "X-YoAI-API-KEY": API_KEY },
       }
     );
-    console.log(resp)
     res.json(resp.data);
   } catch (error) {
     console.error("Error fetching from YoAI API:", error.message);
