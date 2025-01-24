@@ -28,8 +28,24 @@ io.on("connection", (socket) => {
 });
 
 app.get("/webhook", (req, res) => {
-  console.log(req);
-  console.log(res);
+  try {
+    console.log(req.data, 'req')
+    console.log(res.data, 'res')
+    const resp = await axios.post(
+      "https://yoai.yophone.com/api/pub/sendMessage",
+      {
+        to: "37495998920",
+        text: "Bot message",
+      },
+      {
+        headers: { "X-YoAI-API-KEY": API_KEY },
+      }
+    );
+    res.json(resp);
+  } catch (error) {
+    console.error("Error sending message:", error.message);
+    res.status(500).send("Internal Server Error");
+  }
 
   // Log disconnections
   socket.on("disconnect", () => {
