@@ -27,7 +27,7 @@ io.on("connection", (socket) => {
   });
 });
 
-app.get("/webhook", (req, res) => {
+app.get("/webhook", async (req, res) => {
   try {
     console.log(req.data, 'req')
     console.log(res.data, 'res')
